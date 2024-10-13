@@ -20,12 +20,13 @@ return mtime;
 
 
 int main() {
+	struct timeval startTime;
+	gettimeofday(&startTime,NULL);
 	int i, status;
 	pid_t pid[NUMBER_OF_PROCESSES];
 	for (int i = 0 ;i< NUMBER_OF_PROCESSES;i++){
-		struct timeval startTime,currentTime;
+		struct timeval currentTime;
 		printf("Hello from the parent process with PID %d\n", getpid());
-		gettimeofday(&startTime,NULL);
         	pid[i] = fork();
 		if(pid[i] < 0) {
                		printf("fork error\n");
